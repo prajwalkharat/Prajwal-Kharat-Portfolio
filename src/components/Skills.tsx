@@ -84,7 +84,7 @@ const Skills = () => {
                 className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20"
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
               >
-                <h3 className="text-xl font-bold text-white mb-6">{category.title}</h3>
+                <h3 className="text-xl font-bold text-slate-100 mb-6">{category.title}</h3>
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-2">
@@ -186,7 +186,7 @@ const Skills = () => {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="text-4xl mb-3">{cert.icon}</div>
-                <h4 className="font-semibold text-white mb-2">{cert.title}</h4>
+                <h4 className="font-semibold text-slate-100 mb-2">{cert.title}</h4>
                 <p className="text-slate-300 text-sm">{cert.issuer}</p>
               </div>
             ))}
