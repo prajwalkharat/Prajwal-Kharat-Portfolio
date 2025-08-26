@@ -214,7 +214,7 @@
 
   /* Project Cards */
   .project-card {
-    @apply relative group overflow-hidden rounded-2xl;
+    @apply relative overflow-hidden rounded-2xl;
     background: var(--gradient-3d);
     transition: var(--transition-bounce);
   }
