@@ -230,7 +230,7 @@ const Portfolio = () => {
                 className="border-white text-black hover:bg-white/10 text-sm md:text-base"
                 onClick={() => {
                   // Direct download link - user needs to replace with actual resume URL
-                  const resumeUrl = "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID_HERE";
+                  const resumeUrl = "https://drive.google.com/uc?export=download&id=1wZZ2nU7T2r24NSmDZzOmS4p_2f23Lafd";
                   const link = document.createElement('a');
                   link.href = resumeUrl;
                   link.download = 'Prajwal_Resume.pdf';
