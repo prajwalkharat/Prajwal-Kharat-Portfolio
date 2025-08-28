@@ -245,24 +245,24 @@ const Skills = () => {
         {/* Certifications */}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-white mb-8">Certifications & Achievements</h3>
-          <div className="grid md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
             {[
-              { title: "Full Stack Web Development", issuer: "Excelr", icon: <img src="/excelr.webp" sizes="50" alt="excelr" /> },
-              { title: "Java (Core & Advanced)", issuer: "Core2web", icon: <img src="/c2w.webp" sizes="50" alt="c2w" /> },
-              { title: "Certificate of Appreciation", issuer: "Military Institute of Technology", icon: <img src="/milit.png" sizes="50" alt="mil" />},
+              { title: "Full Stack Web Development", issuer: "Excelr", icon: <img src="/excelr.webp" className="h-12 w-auto mx-auto" alt="excelr" /> },
+              { title: "Java (Core & Advanced)", issuer: "Core2web", icon: <img src="/c2w.webp" className="h-12 w-auto mx-auto" alt="c2w" /> },
+              { title: "Certificate of Appreciation", issuer: "Military Institute of Technology", icon: <img src="/milit.png" className="h-12 w-auto mx-auto" alt="mil" />},
               { title: "Certificate of Recognition", issuer: "IEEE", icon: <img src="/ieee.png" className="h-12 w-auto mx-auto" alt="ieee" /> },
-              { title: "Genrative AI Mastermind", issuer: "OutSkill", icon: <img src="/ai.png" sizes="50" alt="outskill" /> },
+              { title: "Genrative AI Mastermind", issuer: "OutSkill", icon: <img src="/ai.png" className="h-12 w-auto mx-auto" alt="outskill" /> },
               
             ].map((cert, index) => (
               <div 
                 key={cert.title}
-                className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20 text-center flex flex-col justify-center"
+                className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20 text-center flex flex-col justify-center w-full max-w-xs mx-auto"
                 style={{ animationDelay: `${index * 0.2}s`, minHeight: '200px' }}
               >
-                <div className="flex-1 flex flex-col justify-center">
-                  <div className="mb-3">{cert.icon}</div>
-                  <h4 className="font-semibold text-slate-800 mb-2">{cert.title}</h4>
-                  <p className="text-slate-600 text-sm">{cert.issuer}</p>
+                <div className="flex-1 flex flex-col justify-center items-center">
+                  <div className="mb-3 flex justify-center items-center">{cert.icon}</div>
+                  <h4 className="font-semibold text-slate-800 mb-2 text-center">{cert.title}</h4>
+                  <p className="text-slate-600 text-sm text-center">{cert.issuer}</p>
                 </div>
               </div>
             ))}
