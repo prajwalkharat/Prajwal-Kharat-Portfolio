@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Award, Target, MapPin } from "lucide-react";
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -50,14 +51,58 @@ const Skills = () => {
         { name: "Git", level: 88, icon: "🔧" },
         { name: "Postman", level: 85, icon: "📮" },
         { name: "Firebase", level: 80, icon: "🔥" },
-        { name: "Lovable.ai", level: 85, icon: "🤖" },
-        { name: "VS Code", level: 92, icon: "💻" }
+        { name: "Cursor", level: 92, icon: "💻" }
       ]
     }
   ];
 
+  const certifications = [
+    { 
+      title: "Full Stack Web Development", 
+      issuer: "Excelr", 
+      icon: "/excelr.webp",
+      fallback: "🎓"
+    },
+    { 
+      title: "Java (Core & Advanced)", 
+      issuer: "Core2web", 
+      icon: "/c2w.webp",
+      fallback: "☕"
+    },
+    { 
+      title: "Certificate of Appreciation", 
+      issuer: "MIT", 
+      icon: "",
+      fallback: "🏆"
+    },
+    { 
+      title: "Certificate of Recognition", 
+      issuer: "IEEE", 
+      icon: "/ieee.png",
+      fallback: "🏅"
+    },
+    { 
+      title: "Generative AI Mastermind", 
+      issuer: "OutSkill", 
+      icon: "",
+      fallback: "🤖"
+    }
+  ];
+
   return (
-    <section id="skills" ref={sectionRef} className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 relative overflow-hidden">
+    <section id="skills" ref={sectionRef} className="relative py-20 bg-gradient-to-b from-slate-900 to-slate-800 overflow-hidden">
+      {/* About Section */}
+      <div className="absolute top-1/2 left-10 right-10 transform -translate-y-1/2 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 backdrop-blur-md border border-cyan-400/30 rounded-2xl p-6 shadow-2xl">
+        <h3 className="text-cyan-300 font-bold mb-4 text-lg"></h3>
+        <div className="space-y-4 text-sm text-gray-200">
+          <div className="flex items-end justify-end gap-6">
+            <div className="flex-1"></div>
+            <img src="/robot.svg" alt="robot" className="w-64 h-64 flex-shrink-0"/>
+          </div>
+
+        </div>
+      </div>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl hero-float" />
@@ -70,7 +115,7 @@ const Skills = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Skills & <span className="text-gradient">Technologies</span>
           </h2>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
             Passionate about learning and mastering cutting-edge technologies to build robust, scalable applications.
           </p>
         </div>
@@ -84,16 +129,16 @@ const Skills = () => {
                 className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20"
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
               >
-                <h3 className="text-xl font-bold text-slate-100 mb-6">{category.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-6">{category.title}</h3>
                 <div className="space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <div className="flex items-center space-x-3">
                           <span className="text-xl">{skill.icon}</span>
-                          <span className="text-slate-200 font-medium">{skill.name}</span>
+                          <span className="text-slate-800 font-medium">{skill.name}</span>
                         </div>
-                        <span className="text-orange-400 font-semibold">{skill.level}%</span>
+                        <span className="text-orange-600 font-semibold">{skill.level}%</span>
                       </div>
                       <div className="skill-bar">
                         <div 
@@ -122,31 +167,57 @@ const Skills = () => {
                     <p className="text-orange-100">Full-Stack Capabilities</p>
                   </div>
 
-                  {/* Tech Stack Visual */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { name: "Frontend", icon: "🎨", color: "bg-blue-500" },
-                      { name: "Backend", icon: "⚙️", color: "bg-green-500" },
-                      { name: "Database", icon: "🗄️", color: "bg-purple-500" },
-                      { name: "Mobile", icon: "📱", color: "bg-pink-500" },
-                      { name: "Cloud", icon: "☁️", color: "bg-cyan-500" },
-                      { name: "DevOps", icon: "🔧", color: "bg-yellow-500" }
-                    ].map((item, index) => (
-                      <div 
-                        key={item.name}
-                        className={`${item.color} rounded-lg p-4 text-center hero-float`}
-                        style={{ animationDelay: `${index * 0.3}s` }}
-                      >
-                        <div className="text-2xl mb-1">{item.icon}</div>
-                        <div className="text-xs font-semibold">{item.name}</div>
-                      </div>
-                    ))}
+                  {/* Tech Stack Grid */}
+                  <div className="grid grid-cols-4 gap-2 p-2">
+                    {/* Frontend */}
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/react.png" alt="React" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/javascript.png" alt="JavaScript" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/html.png" alt="HTML5" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/css3.png" alt="CSS3" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/tailwind.png" alt="Tailwind CSS" className="w-full h-full object-contain" />
+                    </div>
+                    
+                    {/* Backend */}
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/java.png" alt="Java" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/springio-icon.svg" alt="Spring Boot" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/python-language.png" alt="Python" className="w-full h-full object-contain" />
+                    </div>
+                    
+                    {/* Database */}
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/sql.png" alt="SQL" className="w-full h-full object-contain" />
+                    </div>
+                    
+                    {/* Mobile & Tools */}
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/dart.png" alt="Dart" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/flutter.png" alt="Flutter" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex items-center justify-center p-2 hover:scale-125 transition-transform">
+                      <img src="/git.png" alt="Git" className="w-full h-full object-contain" />
+                    </div>
                   </div>
 
                   {/* Experience Metrics */}
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/20">
                     <div className="text-center">
-                      <div className="text-3xl font-bold">2+</div>
+                      <div className="text-3xl font-bold">Fresher</div>
                       <div className="text-sm text-orange-100">Years Experience</div>
                     </div>
                     <div className="text-center">
@@ -174,20 +245,25 @@ const Skills = () => {
         {/* Certifications */}
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-white mb-8">Certifications & Achievements</h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-5 gap-6">
             {[
-              { title: "Full Stack Web Development", issuer: "Excelr", icon: "🎓" },
-              { title: "Java (Core & Advanced)", issuer: "Core2web", icon: "☕" },
-              { title: "Certificate of Appreciation", issuer: "Military Institute of Technology", icon: "🏆" }
+              { title: "Full Stack Web Development", issuer: "Excelr", icon: <img src="/excelr.webp" sizes="50" alt="excelr" /> },
+              { title: "Java (Core & Advanced)", issuer: "Core2web", icon: <img src="/c2w.webp" sizes="50" alt="c2w" /> },
+              { title: "Certificate of Appreciation", issuer: "Military Institute of Technology", icon: <img src="/milit.png" sizes="50" alt="mil" />},
+              { title: "Certificate of Recognition", issuer: "IEEE", icon: <img src="/ieee.png" className="h-12 w-auto mx-auto" alt="ieee" /> },
+              { title: "Genrative AI Mastermind", issuer: "OutSkill", icon: <img src="/ai.png" sizes="50" alt="outskill" /> },
+              
             ].map((cert, index) => (
               <div 
                 key={cert.title}
-                className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20 text-center"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="card-3d p-6 bg-white/10 backdrop-blur-sm border border-white/20 text-center flex flex-col justify-center"
+                style={{ animationDelay: `${index * 0.2}s`, minHeight: '200px' }}
               >
-                <div className="text-4xl mb-3">{cert.icon}</div>
-                <h4 className="font-semibold text-slate-100 mb-2">{cert.title}</h4>
-                <p className="text-slate-300 text-sm">{cert.issuer}</p>
+                <div className="flex-1 flex flex-col justify-center">
+                  <div className="mb-3">{cert.icon}</div>
+                  <h4 className="font-semibold text-slate-800 mb-2">{cert.title}</h4>
+                  <p className="text-slate-600 text-sm">{cert.issuer}</p>
+                </div>
               </div>
             ))}
           </div>

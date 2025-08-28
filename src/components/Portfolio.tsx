@@ -95,18 +95,25 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Filter Buttons with smooth scroll */}
+        <div 
+          className="flex flex-wrap justify-center gap-4 mb-12"
+          role="tablist"
+          aria-label="Project categories"
+        >
           {filters.map((filter) => (
             <Button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
               variant={activeFilter === filter.id ? "default" : "outline"}
-              className={`rounded-full px-6 py-2 transition-all duration-300 ${
+              className={`rounded-full px-6 py-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
                 activeFilter === filter.id 
-                  ? "btn-hero shadow-lg" 
-                  : "border-slate-300 hover:border-orange-400 hover:bg-orange-50"
+                  ? "btn-hero shadow-lg text-white" 
+                  : "border-slate-300 hover:border-orange-400 hover:bg-orange-50 focus:ring-offset-slate-50 text-black"
               }`}
+              role="tab"
+              aria-selected={activeFilter === filter.id}
+              tabIndex={activeFilter === filter.id ? 0 : -1}
             >
               {filter.label}
             </Button>
@@ -118,11 +125,31 @@ const Portfolio = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="project-card group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="project-card group relative transition-all duration-500 hover:z-10"
+              style={{ 
+                animationDelay: `${index * 0.1}s`,
+                perspective: '1000px',
+                willChange: 'transform, opacity',
+                contentVisibility: 'auto',
+                contain: 'paint layout style'
+              }}
+              aria-label={`Project: ${project.title}`}
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden rounded-t-2xl h-48 bg-gradient-to-br ${project.gradient}">
+              {/* Project Image with 3D effect */}
+              <div 
+                className="relative overflow-hidden rounded-2xl h-48 transition-transform duration-500 group-hover:shadow-2xl"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: 'translateZ(0)',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  WebkitTransform: 'translate3d(0,0,0)'
+                }}
+              >
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} rounded-2xl transition-transform duration-500 group-hover:scale-110`}
+                />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-white text-center">
@@ -133,19 +160,19 @@ const Portfolio = () => {
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-slate-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                  <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
+                  {/* <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
                     <Eye size={16} className="mr-2" />
                     Preview
-                  </Button>
+                  </Button> 
                   <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/30">
                     <Github size={16} className="mr-2" />
                     Code
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-4 bg-white rounded-b-2xl shadow-md transition-all duration-500 group-hover:shadow-xl">
                 <div>
                   <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
                     {project.title}
@@ -178,22 +205,7 @@ const Portfolio = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex space-x-3 pt-4">
-                  <Button 
-                    size="sm" 
-                    className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Live View
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="border-slate-300 hover:border-orange-400 hover:bg-orange-50"
-                  >
-                    <Github size={16} />
-                  </Button>
-                </div>
+
               </div>
             </div>
           ))}

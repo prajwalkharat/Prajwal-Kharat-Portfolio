@@ -24,8 +24,15 @@ const Navigation = () => {
     <nav className={`nav-3d ${scrolled ? 'py-4' : 'py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">P</span>
+          <div className="w-10 h-10 rounded-lg overflow-hidden">
+            <img 
+              src="/twisted-torus-abstract-shapes.png" 
+              alt="Logo" 
+              className="w-full h-full object-cover"
+              width={40}
+              height={40}
+              loading="eager"
+            />
           </div>
           <span className="font-bold text-xl text-slate-800">Prajwal</span>
         </div>

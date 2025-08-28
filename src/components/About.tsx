@@ -89,8 +89,12 @@ const About = () => {
                 <div className="space-y-6">
                   {/* Profile Info */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                      <span className="text-2xl font-bold">PK</span>
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center overflow-hidden">
+                      <img 
+                        src="/snowflake-arrow.png" 
+                        alt="Profile" 
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div>
                       <h3 className="font-bold text-lg">Prajwal Kharat</h3>
@@ -105,7 +109,7 @@ const About = () => {
                       <div className="text-xs text-blue-200">Age</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold">2+</div>
+                      <div className="text-2xl font-bold">Fresher</div>
                       <div className="text-xs text-blue-200">Years</div>
                     </div>
                     <div>

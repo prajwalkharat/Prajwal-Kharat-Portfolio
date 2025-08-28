@@ -6,6 +6,37 @@
 
 @layer base {
   :root {
+    --scroll-behavior: smooth;
+    --scroll-padding: 2rem;
+  }
+  
+  html, body {
+    scroll-behavior: var(--scroll-behavior);
+    scroll-padding-top: var(--scroll-padding);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: #0f172a; /* Default dark background */
+    color: #f8fafc; /* Default light text color */
+    min-height: 100vh;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  :root {
     /* Base colors */
     --background: 245 245 250;
     --foreground: 222 84% 4.9%;
@@ -142,15 +173,14 @@
 @layer components {
   /* Loading Animation */
   .loader-container {
-    @apply fixed inset-0 z-50 bg-gradient-to-br from-slate-100 via-blue-50 to-purple-50;
+    @apply fixed inset-0 z-50 bg-white;
     @apply flex items-center justify-center;
     animation: fadeOut 0.8s ease-in-out 2s forwards;
   }
 
-  .loader-3d {
-    @apply relative w-20 h-20;
-    transform-style: preserve-3d;
-    animation: rotate3d 2s linear infinite;
+  .loader {
+    @apply w-16 h-16 border-4 border-orange-100 border-t-orange-500 rounded-full;
+    animation: spin 1s linear infinite;
   }
 
   .loader-face {
@@ -208,7 +238,7 @@
   .skill-progress::after {
     @apply absolute inset-0 rounded-full;
     content: '';
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.671) 50%, transparent 100%);
     animation: shine 2s ease-in-out infinite;
   }
 

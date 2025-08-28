@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail, Phone, MapPin, X } from "lucide-react";
+
+// Import images
+const developerCharacter = "/assets/developer-avatar.svg";
+
+// Import technology logos
+const javaLogo = "/assets/java-icon.svg";
+const reactLogo = "/assets/react-logo.svg";
+const springLogo = "/assets/springio-icon.svg";
+const mysqlLogo = "/assets/mysql-icon.svg";
+const flutterLogo = "/assets/flutterio-icon.svg";
+const dartLogo = "/assets/dartlang-icon.svg";
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showContact, setShowContact] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -41,6 +53,62 @@ const Hero = () => {
         <div className="absolute top-1/2 left-3/4 w-12 h-12 bg-purple-400/20 rounded-full hero-float" style={{ animationDelay: '4s' }} />
       </div>
 
+      {/* Contact Modal */}
+      {showContact && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full relative">
+            <button 
+              onClick={() => setShowContact(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <X size={24} />
+            </button>
+            <h2 className="text-2xl font-bold text-slate-800 mb-6">Get in Touch</h2>
+            
+            <div className="space-y-6">
+              <a 
+                href="mailto:prajwalkharat.skn.comp@gmail.com" 
+                className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-orange-50 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Email</p>
+                  <p className="font-medium text-slate-800">prajwalkharat.skn.comp@gmail.com</p>
+                  <p className="text-sm text-slate-500 mt-1">Send me an email anytime!</p>
+                </div>
+              </a>
+
+              <a 
+                href="tel:+918856003489"
+                className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-blue-50 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Phone</p>
+                  <p className="font-medium text-slate-800">+91 88560 03489</p>
+                  <p className="text-sm text-slate-500 mt-1">Call for urgent matters</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-500">
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Location</p>
+                  <p className="font-medium text-slate-800">Maharashtra, India</p>
+                  <p className="text-sm text-slate-500 mt-1">Available for remote work</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
           {/* Hero Content */}
@@ -50,10 +118,14 @@ const Hero = () => {
                 👋 Hi, my name is
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 leading-tight">
-                <span className="text-reveal">Prajwal</span>
+                <span className="inline-block overflow-hidden">
+                  <span className="inline-block typewriter">Prajwal</span>
+                </span>
                 <br />
-                <span className="text-reveal text-gradient" style={{ animationDelay: '0.2s' }}>
-                  Kharat.
+                <span className="inline-block overflow-hidden">
+                  <span className="inline-block typewriter text-gradient" style={{ animationDelay: '1.2s' }}>
+                    Kharat.
+                  </span>
                 </span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed text-reveal" style={{ animationDelay: '0.4s' }}>
@@ -69,9 +141,9 @@ const Hero = () => {
                 View My Work
               </Button>
               <Button 
-                onClick={() => scrollToSection("contact")}
+                onClick={() => setShowContact(true)}
                 variant="outline" 
-                className="px-8 py-4 rounded-full border-2 border-slate-300 hover:border-orange-400 hover:bg-orange-50 transition-all duration-300"
+                className="px-8 py-4 rounded-full border-2 border-orange-300 text-orange-600 hover:border-orange-400 hover:bg-orange-50 hover:text-orange-700 transition-all duration-300"
               >
                 Get in Touch
               </Button>
@@ -91,24 +163,26 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* 3D Character/Workspace */}
+          {/* Developer Image */}
           <div className="relative hero-float">
             <div className="relative w-full max-w-lg mx-auto">
-              {/* Main Character Container */}
+              {/* Main Image Container */}
               <div className="card-3d p-8 bg-white/80 backdrop-blur-sm">
                 <div className="space-y-6">
-                  {/* Character Avatar */}
-                  <div className="w-32 h-32 mx-auto bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center hero-glow">
-                    <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
-                      <span className="text-3xl font-bold text-orange-500">PK</span>
-                    </div>
+                  {/* Developer Photo */}
+                  <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-orange-400 shadow-xl shadow-orange-500/20">
+                    <img 
+                      src="/man-with-hat.png" 
+                      alt="Developer" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
                   {/* Info Cards */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-slate-100 rounded-lg p-3 text-center">
                       <div className="text-xs text-slate-500">Experience</div>
-                      <div className="font-semibold text-slate-800">2+ Years</div>
+                      <div className="font-semibold text-slate-800">Fresher</div>
                     </div>
                     <div className="bg-slate-100 rounded-lg p-3 text-center">
                       <div className="text-xs text-slate-500">Projects</div>
@@ -118,15 +192,24 @@ const Hero = () => {
 
                   {/* Tech Stack Icons */}
                   <div className="flex justify-center space-x-4">
-                    {["Java", "React", "Spring", "MySQL"].map((tech, index) => (
-                      <div 
-                        key={tech}
-                        className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center text-xs font-semibold text-blue-700 hero-float"
-                        style={{ animationDelay: `${index * 0.5}s` }}
-                      >
-                        {tech.slice(0, 2)}
-                      </div>
-                    ))}
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center hero-float">
+                      <img src={javaLogo} alt="Java" className="w-8 h-8" />
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center hero-float" style={{ animationDelay: '0.5s' }}>
+                      <img src={reactLogo} alt="React" className="w-8 h-8" />
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center hero-float" style={{ animationDelay: '1s' }}>
+                      <img src={springLogo} alt="Spring Boot" className="w-8 h-8" />
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center hero-float" style={{ animationDelay: '1.5s' }}>
+                      <img src={mysqlLogo} alt="MySQL" className="w-8 h-8" />
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center hero-float" style={{ animationDelay: '2s' }}>
+                      <img src={flutterLogo} alt="Flutter" className="w-8 h-8" />
+                    </div>
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center hero-float" style={{ animationDelay: '2.5s' }}>
+                      <img src={dartLogo} alt="Dart" className="w-8 h-8" />
+                    </div>
                   </div>
                 </div>
               </div>

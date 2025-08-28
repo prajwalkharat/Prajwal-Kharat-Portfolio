@@ -88,7 +88,7 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell me about your project or just say hi!"
+                    placeholder="Say hi! Lets Connect"
                     rows={5}
                     required
                     className="w-full border-slate-300 focus:border-orange-400 focus:ring-orange-400/20 rounded-lg resize-none"

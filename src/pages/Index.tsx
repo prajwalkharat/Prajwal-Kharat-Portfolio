@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <>
       <LoadingScreen />
-      <div className="relative overflow-hidden">
+      <div className="relative min-h-screen bg-slate-900 text-slate-100 overflow-hidden">
         <Navigation />
         <main>
           <Hero />
