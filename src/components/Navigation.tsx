@@ -21,10 +21,10 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`nav-3d ${scrolled ? 'py-4' : 'py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <nav className={`nav-3d ${scrolled ? 'py-2 md:py-4' : 'py-3 md:py-6'}`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 rounded-lg overflow-hidden">
+          <div className="w-8 md:w-10 h-8 md:h-10 rounded-lg overflow-hidden">
             <img 
               src="/twisted-torus-abstract-shapes.png" 
               alt="Logo" 
@@ -34,7 +34,7 @@ const Navigation = () => {
               loading="eager"
             />
           </div>
-          <span className="font-bold text-xl text-slate-800">Prajwal</span>
+          <span className="font-bold text-lg md:text-xl text-slate-800">Prajwal</span>
         </div>
         
         <div className="hidden md:flex space-x-8">
@@ -51,9 +51,10 @@ const Navigation = () => {
 
         <Button 
           onClick={() => scrollToSection("contact")}
-          className="btn-hero"
+          className="btn-hero text-xs md:text-sm px-4 md:px-6 py-2 md:py-3"
         >
-          Get in Touch
+          <span className="hidden sm:inline">Get in Touch</span>
+          <span className="sm:hidden">Contact</span>
         </Button>
       </div>
     </nav>

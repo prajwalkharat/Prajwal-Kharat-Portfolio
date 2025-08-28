@@ -167,6 +167,23 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Mobile Responsive Base */
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+    
+    body {
+      line-height: 1.5;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    html {
+      font-size: 13px;
+    }
+  }
 }
 
 /* 3D Portfolio Animations & Components */
@@ -330,6 +347,52 @@
   .nav-item:hover {
     transform: translateY(-2px);
     background: rgba(249, 115, 22, 0.1);
+  }
+
+  /* Mobile Navigation */
+  @media (max-width: 768px) {
+    .nav-3d {
+      @apply px-4 py-3;
+    }
+    
+    .nav-item {
+      @apply px-2 py-1 text-sm;
+    }
+  }
+
+  /* Mobile Responsive Components */
+  @media (max-width: 768px) {
+    .card-3d {
+      @apply rounded-xl;
+      padding: 1rem;
+    }
+
+    .card-3d:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    .btn-hero {
+      @apply px-6 py-3 text-sm;
+    }
+
+    .skill-bar {
+      @apply h-2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card-3d {
+      @apply rounded-lg;
+      padding: 0.75rem;
+    }
+
+    .btn-hero {
+      @apply px-4 py-2 text-xs;
+    }
   }
 }
 
